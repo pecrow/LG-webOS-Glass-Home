@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.ipk
+*.ipk.sha256
+dist/
+local/
+snapshots/
+.env
+.env.*
+node_modules/

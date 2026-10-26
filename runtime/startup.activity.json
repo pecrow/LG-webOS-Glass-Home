@@ -1,0 +1,30 @@
+{
+  "activity": {
+    "name": "org.webosbrew.b9homecustom.startup",
+    "description": "Apply reversible native Home customization at core boot and show Home",
+    "type": {
+      "foreground": true,
+      "persist": true,
+      "continuous": true
+    },
+    "trigger": {
+      "method": "luna://com.webos.bootManager/getBootStatus",
+      "params": {
+        "subscribe": true
+      },
+      "where": {
+        "prop": ["signals", "core-boot-done"],
+        "op": "=",
+        "val": true
+      }
+    },
+    "callback": {
+      "method": "luna://org.webosbrew.hbchannel.service/exec",
+      "params": {
+        "command": "/var/lib/webosbrew/b9-home-custom/control.sh boot >> /var/lib/webosbrew/b9-home-custom/boot.log 2>&1"
+      }
+    }
+  },
+  "start": true,
+  "replace": true
+}

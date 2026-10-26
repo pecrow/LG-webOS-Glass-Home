@@ -1,0 +1,12 @@
+{
+  "id": "org.webosbrew.b9homecustom",
+  "version": "1.0.0",
+  "vendor": "Native Home Customization",
+  "type": "web",
+  "main": "index.html",
+  "title": "LG webOS Glass Home",
+  "icon": "icon.png",
+  "noSplashOnLaunch": true,
+  "bgColor": "#10151d",
+  "resolution": "1920x1080"
+}

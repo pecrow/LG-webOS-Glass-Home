@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5f7">
+  <title>Customize LG Web OS Home</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/image.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-definitions" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-tv" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="3"/><path d="M8 21h8m-4-4v4"/></symbol>
+    <symbol id="icon-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.5"/><path d="m3 16 5-5 4 4 4-5 5 6"/></symbol>
+    <symbol id="icon-dock" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="5"/><path d="M7 10v4m5-4v4m5-4v4"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-weather" viewBox="0 0 24 24"><path d="M7 11a5 5 0 1 1 9 3"/><path d="M4 17a4 4 0 0 1 5-4 5 5 0 0 1 9 1 3 3 0 1 1 0 6H7a3 3 0 0 1-3-3Z"/></symbol>
+    <symbol id="icon-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></symbol>
+  </svg>
+  <main class="shell">
+    <header class="page-header">
+      <div class="brand-icon"><svg class="icon" aria-hidden="true"><use href="#icon-tv"/></svg></div>
+      <div class="heading">
+        <p class="eyebrow">YOUR TV. YOUR HOME.</p>
+        <h1>Customize LG Web OS Home</h1>
+        <p class="subtitle">A little more you, every time you press Home.</p>
+      </div>
+      <span id="connection-state" class="connection-state">Connecting</span>
+    </header>
+    <div class="workspace">
+      <aside class="sidebar">
+        <nav aria-label="Settings sections">
+          <a href="#background"><svg class="icon" aria-hidden="true"><use href="#icon-image"/></svg>Background</a>
+          <a href="#dock"><svg class="icon" aria-hidden="true"><use href="#icon-dock"/></svg>Dock appearance</a>
+          <a href="#clock"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>Clock and date</a>
+          <a href="#weather"><svg class="icon" aria-hidden="true"><use href="#icon-weather"/></svg>Weather</a>
+          <a href="#screensaver"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>Screensaver</a>
+        </nav>
+        <div class="sidebar-note">
+          <span class="device-label">CONNECTED TV</span>
+          <span id="tv-address">Finding your TV...</span>
+          <p>Your changes stay on this TV. No account needed.</p>
+        </div>
+      </aside>
+      <div class="settings-content">
+        <section id="background" class="panel" aria-labelledby="background-heading">
+          <div class="section-heading">
+            <span class="section-icon violet"><svg class="icon" aria-hidden="true"><use href="#icon-image"/></svg></span>
+            <div><h2 id="background-heading">Background</h2><p>Set the scene for your Home screen.</p></div>
+            <fieldset id="background-type" class="background-type" disabled>
+              <legend class="visually-hidden">Background type</legend>
+              <label><input type="radio" name="wallpaper-mode" value="image" checked><span>Image</span></label>
+              <label><input type="radio" name="wallpaper-mode" value="video"><span>Live wallpaper</span></label>
+            </fieldset>
+          </div>
+          <label class="setting-row toggle-row" for="wallpaper-enabled">
+            <span class="setting-copy"><span class="setting-name">Show custom background</span><span class="hint">Turn off to see the current input or app behind Home.</span></span>
+            <input id="wallpaper-enabled" type="checkbox" role="switch" form="settings-form" disabled>
+          </label>
+          <div class="background-preview">
+            <img id="preview" alt="Current custom background" hidden>
+            <video id="video-preview" aria-label="Current live wallpaper" controls muted playsinline preload="metadata" hidden></video>
+            <div id="preview-placeholder" class="preview-placeholder">
+              <svg class="icon" aria-hidden="true"><use href="#icon-image"/></svg>
+              <span>Make yourself at Home</span>
+              <small>Choose a background to get started.</small>
+            </div>
+          </div>
+          <form id="upload-form" class="upload-form">
+            <label class="file-picker" for="image">
+              <span class="upload-icon"><svg class="icon" aria-hidden="true"><use href="#icon-upload"/></svg></span>
+              <span class="file-copy"><span id="upload-title" class="setting-name">Choose an image</span><span id="image-name" class="hint">Resized on your device.</span></span>
+              <input id="image" class="file-input" type="file" accept="image/*" required>
+            </label>
+            <label id="image-layout" class="field" for="background-mode">Image layout
+              <select id="background-mode" aria-describedby="layout-hint">
+                <option value="crop">Crop centered</option>
+                <option value="fit">Fit entire image</option>
+              </select>
+            </label>
+            <button type="submit" class="button primary">Upload background</button>
+            <p id="layout-hint" class="hint upload-hint">Fit stretches the whole image to fill the screen. Crop keeps its proportions and trims the edges. Each upload replaces the previous background.</p>
+          </form>
+        </section>
+        <form id="settings-form">
+          <fieldset id="controls" disabled>
+            <legend class="visually-hidden">Home screen settings</legend>
+            <section id="dock" class="panel" aria-labelledby="dock-heading">
+              <div class="section-heading">
+                <span class="section-icon blue"><svg class="icon" aria-hidden="true"><use href="#icon-dock"/></svg></span>
+                <div><h2 id="dock-heading">Dock appearance and style</h2><p>Find your balance of color and clarity.</p></div>
+              </div>
+              <div class="dock-stage" aria-hidden="true">
+                <div id="dock-preview" class="dock-preview"><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+              <div class="range-setting">
+                <label for="dock-size">Dock size <output id="size-label" for="dock-size"></output></label>
+                <input id="dock-size" type="range" min="0" max="100" step="1" value="40" aria-describedby="dock-size-hint">
+                <div class="range-labels" aria-hidden="true"><span>Smaller</span><span>Larger</span></div>
+                <p id="dock-size-hint" class="hint">40% is the original size. The dock and app icons resize together.</p>
+              </div>
+              <div class="range-setting">
+                <label for="dock-opacity">Opacity <output id="opacity-label" for="dock-opacity"></output></label>
+                <input id="dock-opacity" type="range" min="0" max="100">
+                <div class="range-labels" aria-hidden="true"><span>Transparent</span><span>Solid</span></div>
+              </div>
+              <div class="setting-row">
+                <label class="setting-copy" for="dock-color"><span class="setting-name">Dock color</span><span class="hint">Also used by Inputs and any linked panels.</span></label>
+                <div class="color-choice"><span id="color-label"></span><input id="dock-color" type="color"></div>
+              </div>
+              <details class="border-options">
+                <summary>Show border</summary>
+                <div class="border-choices">
+                  <label class="setting-row toggle-row" for="show-dock-border"><span class="setting-name">Dock</span><input id="show-dock-border" type="checkbox" role="switch"></label>
+                  <label class="setting-row toggle-row" for="show-weather-border"><span class="setting-name">Weather</span><input id="show-weather-border" type="checkbox" role="switch"></label>
+                  <label class="setting-row toggle-row" for="show-input-border"><span class="setting-name">Inputs</span><input id="show-input-border" type="checkbox" role="switch"></label>
+                  <label class="setting-row toggle-row" for="show-hint-border"><span class="setting-name">Question mark</span><input id="show-hint-border" type="checkbox" role="switch"></label>
+                </div>
+              </details>
+              <h3 class="subsection-heading">Inputs appearance</h3>
+              <label class="setting-row toggle-row" for="hide-inputs-button">
+                <span class="setting-copy"><span class="setting-name">Hide Inputs button</span><span class="hint">Make the button transparent. Hover or press Up to open Inputs as usual.</span></span>
+                <input id="hide-inputs-button" type="checkbox" role="switch">
+              </label>
+              <label class="setting-row toggle-row" for="hide-hint-button">
+                <span class="setting-copy"><span class="setting-name">Hide question-mark button</span><span class="hint">Make the icon transparent. Hover its usual top-right position to see the TV address.</span></span>
+                <input id="hide-hint-button" type="checkbox" role="switch">
+              </label>
+              <label class="setting-row toggle-row" for="input-text-opacity">
+                <span class="setting-copy"><span class="setting-name">Opacity affects the Inputs text as well</span><span class="hint">When off, Inputs stays visible even at 0% opacity.</span></span>
+                <input id="input-text-opacity" type="checkbox" role="switch">
+              </label>
+              <label class="setting-row toggle-row" for="hint-follows-inputs">
+                <span class="setting-copy"><span class="setting-name">Apply Inputs appearance to the ? icon</span><span class="hint">Match its background, border, and text opacity. The IP-address popup stays readable.</span></span>
+                <input id="hint-follows-inputs" type="checkbox" role="switch">
+              </label>
+            </section>
+            <section id="clock" class="panel" aria-labelledby="clock-heading">
+              <div class="section-heading">
+                <span class="section-icon coral"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg></span>
+                <div><h2 id="clock-heading">Clock and date</h2><p>Always in sync with your TV's local time.</p></div>
+              </div>
+              <label class="setting-row toggle-row" for="show-clock"><span class="setting-name">Show time</span><input id="show-clock" type="checkbox" role="switch"></label>
+              <label class="setting-row toggle-row" for="show-date"><span class="setting-name">Show date</span><input id="show-date" type="checkbox" role="switch"></label>
+              <label class="setting-row toggle-row" for="clock-24-hour"><span class="setting-name">24-hour time</span><input id="clock-24-hour" type="checkbox" role="switch"></label>
+            </section>
+            <section id="weather" class="panel" aria-labelledby="weather-heading">
+              <div class="section-heading">
+                <span class="section-icon sky"><svg class="icon" aria-hidden="true"><use href="#icon-weather"/></svg></span>
+                <div><h2 id="weather-heading">Weather</h2><p>Current conditions, today's high and low, and the next seven days.</p></div>
+              </div>
+              <label class="setting-row toggle-row" for="show-weather"><span class="setting-copy"><span class="setting-name">Show weather</span><span class="hint">Choose your city below, then save.</span></span><input id="show-weather" type="checkbox" role="switch"></label>
+              <label class="setting-row toggle-row" for="show-weather-dock"><span class="setting-copy"><span class="setting-name">Show weather dock</span><span class="hint">Uses the dock color, opacity, and border setting.</span></span><input id="show-weather-dock" type="checkbox" role="switch"></label>
+              <div class="city-search">
+                <label class="field" for="city">Find your city<input id="city" type="search" placeholder="City, country" maxlength="80" enterkeyhint="search" aria-describedby="city-search-hint" aria-controls="city-results"></label>
+                <button id="search" class="button secondary" type="button">Find city</button>
+              </div>
+              <p id="city-search-hint" class="hint">Enter a city, optionally followed by its country or province. Choose the matching location below.</p>
+              <div id="city-results" class="city-results" role="group" aria-label="Matching locations" hidden></div>
+              <div class="weather-fields">
+                <label class="field" for="location">Location<select id="location"><option value="">Choose a city first</option></select></label>
+                <label class="field" for="unit">Temperature<select id="unit"><option value="fahrenheit">Fahrenheit</option><option value="celsius">Celsius</option></select></label>
+              </div>
+              <p id="weather-status" class="weather-status">Weather is off until a location is selected and saved.</p>
+              <p class="hint attribution">Weather by <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a>. When enabled, only your selected coordinates are sent to the provider, every ten minutes.</p>
+            </section>
+            <section id="screensaver" class="panel" aria-labelledby="screensaver-heading">
+              <div class="section-heading">
+                <span class="section-icon violet"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg></span>
+                <div><h2 id="screensaver-heading">Screensaver timer</h2><p>Choose the TV's screensaver style and Home's idle timer.</p></div>
+              </div>
+              <label class="field" for="screensaver-mode">Screensaver
+                <select id="screensaver-mode"><option value="lg">LG Default</option><option value="dvd">DVD bounce</option></select>
+              </label>
+              <div class="range-setting">
+                <label for="screensaver-seconds">Home idle delay <output id="screensaver-label" for="screensaver-seconds"></output></label>
+                <input id="screensaver-seconds" type="range" min="10" max="300" step="10" value="120">
+                <div class="range-labels" aria-hidden="true"><span>10 seconds</span><span>5 minutes</span></div>
+              </div>
+              <p class="hint">DVD bounce replaces LG's screensaver visuals across the TV. Outside Home, LG still controls inactivity timing and video protection. Dismiss it normally to return to the previous screen.</p>
+            </section>
+          </fieldset>
+        </form>
+        <div class="save-bar">
+          <p id="status" role="status" aria-live="polite">Connecting to your TV...</p>
+          <button id="save-button" type="submit" form="settings-form" class="button primary" disabled><span id="save-spinner" class="save-spinner" aria-hidden="true" hidden></span><span id="save-label">Save changes</span></button>
+        </div>
+        <footer>Made for your native Home screen. Native video rules and OLED protection stay enabled.</footer>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
